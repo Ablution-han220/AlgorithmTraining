@@ -72,46 +72,95 @@ Space Complexity: O(1)
 Note:  
 Easy to implement two pointer method
 
-206. Reverse Linked List
+160. Intersection of Two Linked Lists
 
 ```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
 class Solution {
 public:
-    ListNode* reverseList(ListNode* head) {
-        // iterative
-        ListNode* tmp = nullptr;
-        ListNode* cur = head;
-        ListNode* pre = nullptr;
-        while(cur != nullptr) {
-            tmp = cur->next;
-            cur->next = pre;
-            pre = cur;
-            cur = tmp;
+    ListNode *getIntersectionNode(ListNode *headA, ListNode *headB) {
+        int lenA = 0;
+        int lenB = 0;
+        ListNode* curA = headA;
+        ListNode* curB = headB;
+        while(curA != nullptr) {
+            curA = curA -> next;
+            lenA++;
         }
-        return pre;
+        while(curB != nullptr) {
+            curB = curB -> next;
+            lenB++;
+        }
+        curA = headA;
+        curB = headB;
+        if(lenA < lenB) {
+            swap(curA, curB);
+            swap(lenA, lenB);
+        }
+        int diff = lenA - lenB;
+        while(diff > 0) {
+            curA = curA->next;
+            diff--;
+        }
+        while(curA != nullptr) {
+            if(curA == curB) {
+                return curA;
+            } else {
+                curA = curA->next;
+                curB = curB->next;
+            }
+        }
+        return nullptr;
     }
 };
 
-Time Complexity: O(N)
-Space Complexity: O(1)
+Time Complexity: O(M+N) M is the length of A, N is the length of B
+Space Complexity: O(1) 
+```
 
+142. Linked List Cycle II
+
+```c++
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
 class Solution {
 public:
-    ListNode* reverse(ListNode* cur, ListNode* pre) {
-        if(cur == nullptr) return pre;
-        ListNode* tmp = cur->next;
-        cur->next = pre;
-        return reverse(tmp, cur);
-    }
-
-    ListNode* reverseList(ListNode* head) {
-        //recursive
-        ListNode* cur = head;
-        ListNode* pre = nullptr;
-        return reverse(cur, pre);
+    ListNode *detectCycle(ListNode *head) {
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while(fast != nullptr && fast->next != nullptr) {
+            slow = slow->next;
+            fast = fast->next->next;
+            if(slow == fast) {
+                ListNode* ptr1 = head;
+                ListNode* ptr2 = fast;
+                while(ptr1 != ptr2) {
+                    ptr1 = ptr1->next;
+                    ptr2 = ptr2->next;
+                }
+                return ptr1;
+            }
+        }
+        return nullptr;
     }
 };
 
 Time Complexity: O(N)
-Space Complexity: O(N) Call n-level stack space
+Space Complexity: O(1) 
 ```
+Note:  
+The most confusing part is how to determine the cycle begin points.  
+Need to redo later
