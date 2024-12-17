@@ -1,5 +1,5 @@
-Binary Search
-
+# Array
+## Part.1
 704. Binary Search
 ```c++
 class Solution {

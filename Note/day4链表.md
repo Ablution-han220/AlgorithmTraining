@@ -1,5 +1,5 @@
-Linked List
-
+# Linked List
+## Part.2
 24. Swap Nodes in Pairs
 ```c++
 /**
@@ -162,5 +162,5 @@ Time Complexity: O(N)
 Space Complexity: O(1) 
 ```
 Note:  
-The most confusing part is how to determine the cycle begin points.  
+The most confusing part is how to find the cycle begin points.  
 Need to redo later

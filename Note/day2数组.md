@@ -1,4 +1,5 @@
-Silding Windows
+# Array
+## Part.2
 
 209. Minimum Size Subarray Sum
 ```c++
