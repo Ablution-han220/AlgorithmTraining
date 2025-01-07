@@ -104,3 +104,48 @@ Space Complexity: O(N)
 ```
 
 20. Valid Parentheses
+```c++
+class Solution {
+public:
+    bool isValid(string s) {
+        if(s.size() % 2 == 1) return false;
+        stack<char> st;
+        for(int i = 0; i < s.size(); ++i) {
+            if(s[i] == '(' ) st.push(')');
+            else if(s[i] == '[') st.push(']');
+            else if(s[i] == '{') st.push('}');
+            else if(st.empty() || st.top() != s[i]) return false;
+            else {
+                st.pop();
+            }
+        }
+        return st.empty();
+    }
+};
+
+Time Complexity: O(N) 
+Space Complexity: O(N)
+```
+
+1047. Remove All Adjacent Duplicates In String
+```C++
+class Solution {
+public:
+    string removeDuplicates(string s) {
+        string st;
+        for(char &c : s) {
+            if(st.empty() || st.back() != c) {
+                st.push_back(c);
+            } else {
+                st.pop_back();
+            }
+        }
+        return st;
+    }
+};
+
+Time Complexity: O(N) 
+Space Complexity: O(1)
+```
+Note:   
+using string as stack to avoid extra space costs.
