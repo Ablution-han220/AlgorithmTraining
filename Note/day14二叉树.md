@@ -78,7 +78,7 @@ When does a recursive function need to return a value?
 When is a return value not required? Here are the following three points:  
 1. If you need to search the entire binary tree without dealing with recursive return values, the recursive function should not return a value.  
 2. If you need to search the entire binary tree and need to handle recursive return values, the recursive function needs to return a value.  
-3. If you want to search for one of the paths that meets the conditions, then the recursion must return a value, because you must return in time when you encounter a path that meets the conditions.
+3. If you want to search for one of the paths that meets the conditions, then the recursion must return a value, because you must return in time when you encounter a path that meets the conditions.  
 
 113. Path Sum II
 ```c++
@@ -127,7 +127,7 @@ Space Complexity: O(N)
 Note:   
 make sure how to determine left leaves node.
 
-222. Count Complete Tree Nodes
+106. Construct Binary Tree from Postorder and Inorder Traversal
 ```c++
 /**
  * Definition for a binary tree node.
